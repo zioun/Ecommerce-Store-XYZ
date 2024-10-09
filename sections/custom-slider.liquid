@@ -5,11 +5,18 @@
 
 <section>
   <h1>{{ section.settings.footer_linklist_title }}</h1>
+  <div>
+    {% for block in section.blocks %}
+      {% if block.type == "heading" %}
+        <h2>{{ block.settings.heading }}</h2>
+      {% endif %}
+    {% endfor %}
+  </div>
 </section>
 
 {% schema %}
 {
-  "name": "Custom Slider",
+  "name": "First Section",
   "settings": [
     {
       "type": "text",
@@ -18,9 +25,23 @@
       "default": "Quick links"
     }
   ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Energistically scale high-quality portals via standards compliant scenarios. Interactively implement resource sucking portals rather than accurate potentialities. Competently transform exceptional quality vectors rather than cross-platform."
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "custom-slider"
+      "name": "first-section"
     }
   ]
 }

@@ -7,9 +7,12 @@
   <h1>{{ section.settings.footer_linklist_title }}</h1>
   <div>
     {% for block in section.blocks %}
-      {% if block.type == "heading" %}
+      {% case block.type %}
+        {% when "heading" %}
         <h2>{{ block.settings.heading }}</h2>
-      {% endif %}
+        {%  when "button" %}
+        <a href="{{ block.settings.button_link }}">{{ block.settings.button }}</a>
+      {% endcase %}
     {% endfor %}
   </div>
 </section>
@@ -37,11 +40,36 @@
           "default": "Energistically scale high-quality portals via standards compliant scenarios. Interactively implement resource sucking portals rather than accurate potentialities. Competently transform exceptional quality vectors rather than cross-platform."
         }
       ]
+    },
+    {
+      "type": "button",
+      "name": "Buttons",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button",
+          "label": "button",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "first-section"
+      "name": "first-section",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "button"
+        }
+      ]
     }
   ]
 }

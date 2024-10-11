@@ -16,6 +16,13 @@
     {% endfor %}
   </div>
 </section>
+<section>
+  {% section "footer" none %}
+</section>
+
+{% if section.settings.image != blank %}
+    {{ section.settings |  image_url: width: 800 | image_tag  }}
+{% endif %}
 
 {% schema %}
 {
